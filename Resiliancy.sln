@@ -4,16 +4,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{27B506D5-12A2-40E5-AD47-CCC2589BD33D}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		LICENSE = LICENSE
-		README.md = README.md
-	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlitzkriegSoftware.Demo.Resiliancy.WebSvc", "BlitzkriegSoftware.Demo.Resiliancy.WebSvc\BlitzkriegSoftware.Demo.Resiliancy.WebSvc.csproj", "{5A59556F-F6C4-4C39-B8CE-F6E7A99FE16B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlitzkriegSoftware.Demo.Resiliancy.WebSvc", "BlitzkriegSoftware.Demo.Resiliancy.WebSvc\BlitzkriegSoftware.Demo.Resiliancy.WebSvc.csproj", "{5A59556F-F6C4-4C39-B8CE-F6E7A99FE16B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{75C423EF-2726-4760-B644-2D172277BF74}"
 	ProjectSection(SolutionItems) = preProject
+		scripts\sh-cmd.sh = scripts\sh-cmd.sh
 		scripts\sql-cmd.sh = scripts\sql-cmd.sh
 		scripts\sql-start.sh = scripts\sql-start.sh
 		scripts\sql-stop.sh = scripts\sql-stop.sh
@@ -22,6 +18,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{618342B6-318F-4B5F-AFEB-8E6FDD7029F2}"
 	ProjectSection(SolutionItems) = preProject
 		data\Bicycle.bak = data\Bicycle.bak
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Info", "Info", "{4A4F1A12-9B96-4A7F-B3AE-4B108121F840}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Bicycle_DB_Diagram.png = Bicycle_DB_Diagram.png
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
@@ -54,6 +58,7 @@ Global
 		{5A59556F-F6C4-4C39-B8CE-F6E7A99FE16B} = {27B506D5-12A2-40E5-AD47-CCC2589BD33D}
 		{75C423EF-2726-4760-B644-2D172277BF74} = {27B506D5-12A2-40E5-AD47-CCC2589BD33D}
 		{618342B6-318F-4B5F-AFEB-8E6FDD7029F2} = {27B506D5-12A2-40E5-AD47-CCC2589BD33D}
+		{4A4F1A12-9B96-4A7F-B3AE-4B108121F840} = {27B506D5-12A2-40E5-AD47-CCC2589BD33D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A819099A-2867-4862-8A22-5CE2019B3947}
