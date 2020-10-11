@@ -1,0 +1,344 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BlitzkriegSoftware.Demo.Resiliancy.WebSvc</name>
+    </assembly>
+    <members>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController">
+            <summary>
+            ADO Controller
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController})">
+            <summary>
+            CTOR
+            </summary>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController">
+            <summary>
+            Controller: Entity Framework Resiliancy
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController})">
+            <summary>
+            CTOR
+            </summary>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController">
+            <summary>
+            Controller: Http Resiliancy
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController})">
+            <summary>
+            CTOR
+            </summary>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._CommonBase">
+            <summary>
+            Common Controller Base
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._CommonBase.#ctor(Microsoft.Extensions.Logging.ILogger)">
+            <summary>
+            CTOR
+            </summary>
+            <param name="logger"></param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._CommonBase.VersionGet">
+            <summary>
+            Get Semantic Version
+            </summary>
+            <returns>String of Semantic Version</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._CommonBase.VersionInfo">
+            <summary>
+            Return Program Metadata and Version Info
+            </summary>
+            <returns>Program Metadata and Version Info</returns>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.AssembyInfoHelper">
+            <summary>
+            Helper: Assembly Info
+            <para>Translates the <c>CustomAttributeData</c> to a usable string value</para>
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.AssembyInfoHelper.TryParse(System.Reflection.CustomAttributeData,System.String@)">
+            <summary>
+            Try Parse a <c>System.Reflection.CustomAttributeData</c> into a string
+            </summary>
+            <param name="attribute">(this)</param>
+            <param name="s">Strng to parse into</param>
+            <returns>True if success</returns>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.BlitzHealthCheck">
+            <summary>
+            Example: Custom Health Check
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.BlitzHealthCheck.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.BlitzHealthCheck})">
+            <summary>
+            CTOR
+            </summary>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.BlitzHealthCheck.CheckHealthAsync(Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckContext,System.Threading.CancellationToken)">
+            <summary>
+            Sample Health Check
+            </summary>
+            <param name="context">HealthCheckContext</param>
+            <param name="cancellationToken">CancellationToken</param>
+            <returns>HealthCheckResult</returns>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.GlobalExceptionFilter">
+            <summary>
+            Global Exception Filter
+            <para>See: www.talkingdotnet.com/global-exception-handling-in-aspnet-core-webapi/</para>
+            </summary>
+        </member>
+        <member name="F:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.GlobalExceptionFilter._logger">
+            <summary>
+            Field: ILogger
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.GlobalExceptionFilter.#ctor(Microsoft.Extensions.Logging.ILoggerFactory)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.GlobalExceptionFilter"/> class.
+            CTOR
+            </summary>
+            <param name="loggerFactory">Logger to inject</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.GlobalExceptionFilter.Dispose">
+            <summary>
+            Public implementation of Dispose pattern callable by consumers.
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.GlobalExceptionFilter.Dispose(System.Boolean)">
+            <summary>
+            Protected implementation of Dispose pattern.
+            </summary>
+            <param name="disposing">bool</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.GlobalExceptionFilter.OnException(Microsoft.AspNetCore.Mvc.Filters.ExceptionContext)">
+            <summary>
+            Handle Exception
+            </summary>
+            <param name="context">ExceptionContext</param>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch">
+            <summary>
+            Provides for switching on type (handy for error handling)
+            <para>From: http://stackoverflow.com/questions/11277036/typeswitching-in-c-sharp</para>
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch.CaseInfo">
+            <summary>
+            Case Info
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch.CaseInfo.IsDefault">
+            <summary>
+            Gets or sets a value indicating whether is Default Case
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch.CaseInfo.Target">
+            <summary>
+            Gets or sets type to switch on
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch.CaseInfo.Action">
+            <summary>
+            Gets or sets thing to do if this case selected
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch.Do(System.Object,BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch.CaseInfo[])">
+            <summary>
+            Do the action
+            </summary>
+            <param name="source">Source of the action</param>
+            <param name="cases">Cases</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch.Case``1(System.Action)">
+            <summary>
+            Case Block
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="action">Action</param>
+            <returns>Case Information</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch.Case``1(System.Action{``0})">
+            <summary>
+            Case Block (Generic)
+            </summary>
+            <typeparam name="T">Type</typeparam>
+            <param name="action">Action</param>
+            <returns>Case Information</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch.Default(System.Action)">
+            <summary>
+            Default Case Block
+            </summary>
+            <param name="action">Action</param>
+            <returns>Case Information</returns>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata">
+            <summary>
+            Model: Assembly Version Metadata
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.Copyright">
+            <summary>
+            Gets or sets copyright
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.Company">
+            <summary>
+            Gets or sets company
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.Description">
+            <summary>
+            Gets or sets description
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.SemanticVersion">
+            <summary>
+            Gets or sets semantic Version <para>See: semver.org</para>
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.MajorVersion">
+            <summary>
+            Gets major version as it occurs on the path
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.Product">
+            <summary>
+            Gets or sets product
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.ReleaseNotesUrl">
+            <summary>
+            Put the Uri to your release notes here
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.TeamName">
+            <summary>
+            Team Name 
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.TeamEMail">
+            <summary>
+            TeamEmail
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.PropertySet(System.String,System.String)">
+            <summary>
+            Property Set
+            </summary>
+            <param name="name">name</param>
+            <param name="value">value</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata.ToString">
+            <summary>
+            Formatted String
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.ErrorPayload">
+            <summary>
+            Error Payload
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.ErrorPayload.StatusCode">
+            <summary>
+            Gets or sets hTTP Status Code
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.ErrorPayload.Message">
+            <summary>
+            Gets or sets message
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.ErrorPayload.StackTrace">
+            <summary>
+            Gets or sets stack Trace
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.ErrorPayload.Data">
+            <summary>
+            Gets or sets additional Data
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.ErrorPayload.ToString">
+            <summary>
+            Debugging String
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Program">
+            <summary>
+            Host
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Program.Main(System.String[])">
+            <summary>
+            Main Entry Point
+            </summary>
+            <param name="args">Command line args</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            Host Builder
+            </summary>
+            <param name="args">Command line args</param>
+            <returns>IHostBuilder</returns>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Program.ProgramMetadata">
+            <summary>
+            Gets semantic Version, etc from Assembly Metadata
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Startup">
+            <summary>
+            Host Configuration Class
+            </summary>
+        </member>
+        <member name="F:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Startup.CommonVersion">
+            <summary>
+            Common
+            </summary>
+        </member>
+        <member name="F:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Startup.MajorVersionCurrent">
+            <summary>
+            Current
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            CTOR
+            </summary>
+            <param name="configuration">IConfiguration</param>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Startup.Configuration">
+            <summary>
+            IConfiguration
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services">IServiceCollection</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app">IApplicationBuilder</param>
+            <param name="env">IWebHostEnvironment</param>
+        </member>
+    </members>
+</doc>
