@@ -1,6 +1,8 @@
 using System;
 using System.IO;
 using System.Reflection;
+using BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs;
+using BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Svcs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -53,7 +55,10 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
 
             _ = services.AddCors();
 
-            _ = services.AddHttpClient();
+            // See: We inject HttpClientFactory w. a Retry Policy
+            _ = services.AddHttpClient<IHttpCaller, HttpCaller>()
+                                   .SetHandlerLifetime(TimeSpan.FromSeconds(1))
+                                   .AddPolicyHandler(HttpRetryPolicyJitter.GetRetryPolicy());
 
             _ = services.AddMvc(
                 config =>

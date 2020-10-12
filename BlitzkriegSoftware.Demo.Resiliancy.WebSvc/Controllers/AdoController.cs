@@ -18,6 +18,9 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
 
     public class AdoController : _ControllerBase
     {
+
+        #region "Boilerplate"
+
         private readonly IConfiguration _config;
 
         /// <summary>
@@ -55,6 +58,8 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
             }
         }
 
+        #endregion
+
         /// <summary>
         /// Get a sample Customer, Order, Product
         /// </summary>
@@ -80,6 +85,26 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
             return this.Ok(d);
         }
 
+        /// <summary>
+        /// Inits ETL by calling SP
+        /// </summary>
+        /// <returns>(nothing)</returns>
+        [HttpGet("initetl")]
+        [ProducesResponseType(200)]
+        public IActionResult InitEtl()
+        {
+            string sql = "[etl].[p00_InitEtl]";
+
+            var polly = Libs.AdoPollyPolicy.SqlRetryPolicy(this.Logger);
+
+            // See: Execute SP with a retry policy via Polly.
+            polly.Execute(() =>
+            {
+                SqlHelper.ExecuteStoredProcedureWithNoReturn(this.SqlConnection, sql, null);
+            });
+
+            return this.Ok();
+        }
 
     }
 }

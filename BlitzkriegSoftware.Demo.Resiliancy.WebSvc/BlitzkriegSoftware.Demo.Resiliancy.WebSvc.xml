@@ -27,6 +27,12 @@
             </summary>
             <returns>Results in JSON</returns>
         </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.InitEtl">
+            <summary>
+            Inits ETL by calling SP
+            </summary>
+            <returns>(nothing)</returns>
+        </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.CommonController">
             <summary>
             Common Controller
@@ -66,11 +72,23 @@
             Controller: Http Resiliancy
             </summary>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController})">
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.Factory">
+            <summary>
+            Client Factory
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController},System.Net.Http.IHttpClientFactory)">
             <summary>
             CTOR
             </summary>
             <param name="logger">ILogger</param>
+            <param name="factory">IHttpClientFactory</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.Employees">
+            <summary>
+            Employees
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._ControllerBase">
             <summary>
@@ -134,6 +152,18 @@
             <param name="cancellationToken">CancellationToken</param>
             <returns>HealthCheckResult</returns>
         </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.BlitzUtility">
+            <summary>
+            Utilities
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.BlitzUtility.ToDictionary(System.Data.DataTable)">
+            <summary>
+            Convert to JSON
+            </summary>
+            <param name="dt">DataTable</param>
+            <returns>Json</returns>
+        </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.GlobalExceptionFilter">
             <summary>
             Global Exception Filter
@@ -168,6 +198,17 @@
             Handle Exception
             </summary>
             <param name="context">ExceptionContext</param>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.HttpRetryPolicyJitter">
+            <summary>
+            Polly HttpClient Expo. Retry w. Jitter
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.HttpRetryPolicyJitter.GetRetryPolicy">
+            <summary>
+            Gives back a nice standard policy
+            </summary>
+            <returns>Polly Policy</returns>
         </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.TypeSwitch">
             <summary>
@@ -224,18 +265,6 @@
             </summary>
             <param name="action">Action</param>
             <returns>Case Information</returns>
-        </member>
-        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.Utilities">
-            <summary>
-            Utilities
-            </summary>
-        </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.Utilities.ToDictionary(System.Data.DataTable)">
-            <summary>
-            Convert to JSON
-            </summary>
-            <param name="dt">DataTable</param>
-            <returns>Json</returns>
         </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata">
             <summary>
@@ -392,6 +421,36 @@
             </summary>
             <param name="app">IApplicationBuilder</param>
             <param name="env">IWebHostEnvironment</param>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Svcs.HttpCaller">
+            <summary>
+            Implementation: HttpCaller
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Svcs.HttpCaller.#ctor(System.Net.Http.HttpClient)">
+            <summary>
+            CTOR
+            </summary>
+            <param name="client">(DI Injected)</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Svcs.HttpCaller.GetIt(System.Uri)">
+            <summary>
+            Get the contents of a URI
+            </summary>
+            <param name="fromWhere">Uri</param>
+            <returns>HttpResponseMessage</returns>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Svcs.IHttpCaller">
+            <summary>
+            Interface: IHttpCaller
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Svcs.IHttpCaller.GetIt(System.Uri)">
+            <summary>
+            Get the contents of a URI
+            </summary>
+            <param name="fromWhere">Uri</param>
+            <returns>HttpResponseMessage</returns>
         </member>
     </members>
 </doc>

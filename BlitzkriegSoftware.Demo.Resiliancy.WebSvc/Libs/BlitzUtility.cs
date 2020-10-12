@@ -12,7 +12,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
     /// <summary>
     /// Utilities
     /// </summary>
-    public static class Utilities
+    public static class BlitzUtility
     {
         // See: https://www.c-sharpcorner.com/UploadFile/9bff34/3-ways-to-convert-datatable-to-json-string-in-Asp-Net-C-Sharp/
 
