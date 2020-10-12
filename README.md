@@ -16,7 +16,7 @@ Please have `Docker` Running.
 
 In `scripts/` there are the following scripts
 
-* sql-start.sh - starts sql server and mounts the demo `data` directory as `/data`  
+* sql-start.sh - starts sql server and mounts the demo `data` directory as `/data` and restores the "Bicycle" database
 * sql-stop.sh - stops sql server and tears container down
 * sql-cmd.sh - Opens a SQL prompt on the container  
 * sh-cmd.sh  - Opens a BASH shell on the container
@@ -29,14 +29,13 @@ The SQL Demos use the Blitzkrieg Bicycle Demo.
 
 ## Restore SQL Linux
 
-Use the `sql-cmd.sh` to open a sql promp and paste in the following:
+You don't need to run this but it is here for completeness, see: `data/Restore.sql` and `data/Bicycle.bak`
 
-```sql
-RESTORE DATABASE Bicycle FROM DISK = '/data/Bicycle.bak' 
-    WITH MOVE 'Bicycle' TO '/var/opt/mssql/data/Bicycle.mdf', 
-    MOVE 'Bicycle_Log' TO '/var/opt/mssql/data/Bicycle.ldf'
+## Demo REST endpoint to call
 
-GO
-```
+This exellent endpoint is just the thing to demo how to use `HttpClientFactory` properly.
+
+http://dummy.restapiexample.com/
+
 
 

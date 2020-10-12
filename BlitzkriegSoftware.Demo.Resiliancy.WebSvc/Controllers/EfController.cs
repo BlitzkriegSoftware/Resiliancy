@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
@@ -16,7 +11,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
     [Route("/v1/ef")]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 
-    public class EfController : _CommonBase
+    public class EfController : _ControllerBase
     {
         /// <summary>
         /// CTOR

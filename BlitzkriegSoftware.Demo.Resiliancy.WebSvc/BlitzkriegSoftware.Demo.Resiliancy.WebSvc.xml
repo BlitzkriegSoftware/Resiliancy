@@ -9,11 +9,46 @@
             ADO Controller
             </summary>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController})">
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController},Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             CTOR
             </summary>
             <param name="logger">ILogger</param>
+            <param name="config">IConfiguration</param>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.SqlConnection">
+            <summary>
+            SQL Connection String
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.CustomerOrderProduct">
+            <summary>
+            Get a sample Customer, Order, Product
+            </summary>
+            <returns>Results in JSON</returns>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.CommonController">
+            <summary>
+            Common Controller
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.CommonController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.CommonController})">
+            <summary>
+            CTOR
+            </summary>
+            <param name="logger">ILogger</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.CommonController.VersionGet">
+            <summary>
+            Get Semantic Version
+            </summary>
+            <returns>String of Semantic Version</returns>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.CommonController.VersionInfo">
+            <summary>
+            Return Program Metadata and Version Info
+            </summary>
+            <returns>Program Metadata and Version Info</returns>
         </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController">
             <summary>
@@ -37,28 +72,34 @@
             </summary>
             <param name="logger">ILogger</param>
         </member>
-        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._CommonBase">
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._ControllerBase">
             <summary>
             Common Controller Base
             </summary>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._CommonBase.#ctor(Microsoft.Extensions.Logging.ILogger)">
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._ControllerBase.Logger">
+            <summary>
+            Logger
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._ControllerBase.#ctor(Microsoft.Extensions.Logging.ILogger)">
             <summary>
             CTOR
             </summary>
             <param name="logger"></param>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._CommonBase.VersionGet">
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.AdoPollyPolicy">
             <summary>
-            Get Semantic Version
+            Example
+            <c>https://github.com/App-vNext/Polly</c>
             </summary>
-            <returns>String of Semantic Version</returns>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers._CommonBase.VersionInfo">
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.AdoPollyPolicy.SqlRetryPolicy(Microsoft.Extensions.Logging.ILogger)">
             <summary>
-            Return Program Metadata and Version Info
+            Polly: SQL Retry Policy
             </summary>
-            <returns>Program Metadata and Version Info</returns>
+            <param name="logger">ILogger</param>
+            <returns>Policy</returns>
         </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.AssembyInfoHelper">
             <summary>
@@ -183,6 +224,18 @@
             </summary>
             <param name="action">Action</param>
             <returns>Case Information</returns>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.Utilities">
+            <summary>
+            Utilities
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.Utilities.ToDictionary(System.Data.DataTable)">
+            <summary>
+            Convert to JSON
+            </summary>
+            <param name="dt">DataTable</param>
+            <returns>Json</returns>
         </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models.AssemblyVersionMetadata">
             <summary>

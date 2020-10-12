@@ -14,7 +14,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
     [ApiExplorerSettings(GroupName = "v1")]
     [Route("/v1/http")]
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public class HttpController : _CommonBase
+    public class HttpController : _ControllerBase
     {
         /// <summary>
         /// CTOR
