@@ -21,41 +21,12 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
 
         #region "Boilerplate"
 
-        private readonly IConfiguration _config;
-
         /// <summary>
         /// CTOR
         /// </summary>
         /// <param name="logger">ILogger</param>
-        /// <param name="config">IConfiguration</param>
-        public AdoController(ILogger<AdoController> logger, IConfiguration config): base(logger)
+        public AdoController(ILogger<AdoController> logger): base(logger)
         {
-            this._config = config;
-        }
-
-        private string _sqlconnection;
-
-        /// <summary>
-        /// SQL Connection String
-        /// </summary>
-        public string SqlConnection
-        {
-            get
-            {
-                if(string.IsNullOrWhiteSpace(_sqlconnection))
-                {
-                    foreach(var c in this._config.AsEnumerable())
-                    {
-                        if(c.Key.Contains("SQL"))
-                        {
-                            this._sqlconnection = c.Value;
-                            break;
-                        }
-                    }
-                    
-                }
-                return _sqlconnection;
-            }
         }
 
         #endregion
@@ -77,7 +48,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
             // See: Execute SP with a retry policy via Polly.
             polly.Execute(() =>
             {
-                dt = SqlHelper.ExecuteSqlWithParametersToDataTable(this.SqlConnection, sql, null);
+                dt = SqlHelper.ExecuteSqlWithParametersToDataTable(Program.SqlConnectionString, sql, null);
             });
 
             var d = dt.ToDictionary();
@@ -100,7 +71,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
             // See: Execute SP with a retry policy via Polly.
             polly.Execute(() =>
             {
-                SqlHelper.ExecuteStoredProcedureWithNoReturn(this.SqlConnection, sql, null);
+                SqlHelper.ExecuteStoredProcedureWithNoReturn(Program.SqlConnectionString, sql, null);
             });
 
             return this.Ok();

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
 
 namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
@@ -47,6 +48,20 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
         {
             this.Logger.LogInformation($"{Program.ProgramMetadata}");
             return this.Ok(Program.ProgramMetadata);
+        }
+
+        /// <summary>
+        /// Health Check
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet("health")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [Produces("application/json")]
+        public async Task<HealthCheckResult> Health2()
+        {
+            var ctx = new Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckContext();
+            var hc = new Libs.BlitzHealthCheck(this.Logger);
+            return await hc.CheckHealthAsync(ctx).ConfigureAwait(false);
         }
     }
 }

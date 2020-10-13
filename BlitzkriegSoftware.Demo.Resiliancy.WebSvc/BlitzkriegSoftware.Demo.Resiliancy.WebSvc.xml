@@ -9,17 +9,11 @@
             ADO Controller
             </summary>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController},Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController})">
             <summary>
             CTOR
             </summary>
             <param name="logger">ILogger</param>
-            <param name="config">IConfiguration</param>
-        </member>
-        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.SqlConnection">
-            <summary>
-            SQL Connection String
-            </summary>
         </member>
         <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.AdoController.CustomerOrderProduct">
             <summary>
@@ -56,16 +50,29 @@
             </summary>
             <returns>Program Metadata and Version Info</returns>
         </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.CommonController.Health2">
+            <summary>
+            Health Check
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController">
             <summary>
             Controller: Entity Framework Resiliancy
             </summary>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController})">
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController})">
             <summary>
             CTOR
             </summary>
+            <param name="factory">ILoggerFactory</param>
             <param name="logger">ILogger</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.EfController.CustomerOrderProduct2">
+            <summary>
+            EF Example of Customer Order Product
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController">
             <summary>
@@ -77,12 +84,13 @@
             Client Factory
             </summary>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController},System.Net.Http.IHttpClientFactory)">
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController},System.Net.Http.IHttpClientFactory,Microsoft.Extensions.Configuration.IConfiguration)">
             <summary>
             CTOR
             </summary>
             <param name="logger">ILogger</param>
             <param name="factory">IHttpClientFactory</param>
+            <param name="config">IConfiguration</param>
         </member>
         <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.Employees">
             <summary>
@@ -105,6 +113,374 @@
             CTOR
             </summary>
             <param name="logger"></param>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext">
+            <summary>
+            EF Context: Bicycle
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.SqlConnectionString">
+            <summary>
+            Sql Connection String
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.LoggerFactory">
+            <summary>
+            Logger Factory
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.#ctor">
+            <summary>
+            CTOR
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext})">
+            <summary>
+            CTOR
+            </summary>
+            <param name="options">DbContextOptions</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,System.String)">
+            <summary>
+            CTOR
+            </summary>
+            <param name="loggerFactory">ILoggerFactory</param>
+            <param name="connectionString">string</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,System.String,Microsoft.EntityFrameworkCore.DbContextOptions{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext})">
+            <summary>
+            CTOR
+            </summary>
+            <param name="loggerFactory">ILoggerFactory</param>
+            <param name="connectionString">string</param>
+            <param name="options">DbContextOptions</param>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.Configuration">
+            <summary>
+            DbSet: Configuration
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.Customer">
+            <summary>
+            DbSet: Customer
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.ErrorLog">
+            <summary>
+            DbSet: ErrorLog
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.FilesToImport">
+            <summary>
+            DbSet FilesToImport
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.Order">
+            <summary>
+            DbSet: Order
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.OrderDetail">
+            <summary>
+            DbSet: OrderDetail
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.OrdersRaw">
+            <summary>
+            DbSet: OrderDetail
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.Product">
+            <summary>
+            DbSet: Product
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Event: OnConfiguring
+            </summary>
+            <param name="optionsBuilder">DbContextOptionsBuilder</param>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.BicycleContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            Event: OnModelCreating
+            </summary>
+            <param name="modelBuilder">ModelBuilder</param>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Configuration">
+            <summary>
+            Table: Configuration
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Configuration.Name">
+            <summary>
+            Name
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Configuration.Value">
+            <summary>
+            Value
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer">
+            <summary>
+            Table: Customer
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.#ctor">
+            <summary>
+            CTOR
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.CustomerId">
+            <summary>
+            PK
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.NameLast">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.NameFirst">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.Company">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.Address1">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.Address2">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.Address3">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.Address4">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.City">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.StateOrProvence">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.PostalCode">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.PhonePrimary">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.Email">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.IsActive">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Customer.Order">
+            <summary>
+            Collection: Order(s)
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.ErrorLog">
+            <summary>
+            Table: ErrorLog
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.ErrorLog.ErrorLogId">
+            <summary>
+            (Auto)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.ErrorLog.Step">
+            <summary>
+            Step #
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.ErrorLog.Comment">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.FilesToImport">
+            <summary>
+            Table: FilesToImport
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.FilesToImport.FileNamePath">
+            <summary>
+            Full path to file
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Order">
+            <summary>
+            Table: Order
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Order.#ctor">
+            <summary>
+            CTOR
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Order.OrderId">
+            <summary>
+            PK
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Order.CustomerId">
+            <summary>
+            FK
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Order.OrderDate">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Order.IsActive">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Order.Customer">
+            <summary>
+            Navigation back
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Order.OrderDetail">
+            <summary>
+            Collection: Order Detail
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrderDetail">
+            <summary>
+            Table: Order Detail
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrderDetail.OrderDetailId">
+            <summary>
+            PK
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrderDetail.OrderId">
+            <summary>
+            FK
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrderDetail.ProductId">
+            <summary>
+            FK
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrderDetail.CostEach">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrderDetail.Quantity">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrderDetail.Order">
+            <summary>
+            Navigation: back to Order
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrderDetail.Product">
+            <summary>
+            Navigation: to Product
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrdersRaw">
+            <summary>
+            Table: OrdersRaw (ETL)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrdersRaw.Email">
+            <summary>
+            Ref: To Customer
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrdersRaw.ProductId">
+            <summary>
+            Ref: To Product
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrdersRaw.Quantity">
+            <summary>
+            Quantity
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.OrdersRaw.OrderDate">
+            <summary>
+            Order Date
+            </summary>
+        </member>
+        <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Product">
+            <summary>
+            Table: Product
+            </summary>
+        </member>
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Product.#ctor">
+            <summary>
+            CTOR
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Product.ProductId">
+            <summary>
+            PK
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Product.Name">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Product.Description">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Product.IsActive">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Product.Price">
+            <summary>
+            (sic)
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef.Product.OrderDetail">
+            <summary>
+            Collection: OrderDetail
+            </summary>
         </member>
         <member name="T:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.AdoPollyPolicy">
             <summary>
@@ -138,7 +514,7 @@
             Example: Custom Health Check
             </summary>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.BlitzHealthCheck.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.BlitzHealthCheck})">
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs.BlitzHealthCheck.#ctor(Microsoft.Extensions.Logging.ILogger)">
             <summary>
             CTOR
             </summary>
@@ -377,6 +753,26 @@
             </summary>
             <param name="args">Command line args</param>
             <returns>IHostBuilder</returns>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Program.Services">
+            <summary>
+            IServiceCollection
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Program.Configuration">
+            <summary>
+            IConfiguration Root
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Program.SqlConnectionString">
+            <summary>
+            SQL Connection String
+            </summary>
+        </member>
+        <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Program.RestUrl">
+            <summary>
+            Rest URL
+            </summary>
         </member>
         <member name="P:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Program.ProgramMetadata">
             <summary>

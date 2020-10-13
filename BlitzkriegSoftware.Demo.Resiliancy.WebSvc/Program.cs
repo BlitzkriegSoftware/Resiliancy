@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -16,9 +14,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
     /// Host
     /// </summary>
     [ExcludeFromCodeCoverage]
-#pragma warning disable CA1052 // Static holder types should be Static or NotInheritable
-    public class Program
-#pragma warning restore CA1052 // Static holder types should be Static or NotInheritable
+    public static class Program
     {
         /// <summary>
         /// Main Entry Point
@@ -53,12 +49,80 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
                        .AddEnvironmentVariables();
 
                     // Do this LAST
-                    configBuilder.Build();
+                    Program.Configuration = configBuilder.Build();
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Startup>();
+                    _ = webBuilder.UseStartup<Startup>();
                 });
+
+        #region "Configuration and Helpers"
+
+        /// <summary>
+        /// IServiceCollection
+        /// </summary>
+#pragma warning disable CA2227 // Needed for Start up
+        public static IServiceProvider Services { get; set; }
+#pragma warning restore CA2227 // Collection properties should be read only
+
+        /// <summary>
+        /// IConfiguration Root
+        /// </summary>
+        public static IConfigurationRoot Configuration { get; set; }
+
+        private static string _sqlconnectionstring;
+        private static string _resturl;
+
+        /// <summary>
+        /// SQL Connection String
+        /// </summary>
+        public static string SqlConnectionString
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_sqlconnectionstring))
+                {
+                    foreach (var c in Configuration.AsEnumerable())
+                    {
+                        if (c.Key.Contains("SQL"))
+                        {
+                            _sqlconnectionstring = c.Value;
+                            break;
+                        }
+                    }
+
+                }
+                return _sqlconnectionstring;
+            }
+        }
+
+
+        /// <summary>
+        /// Rest URL
+        /// </summary>
+#pragma warning disable CA1056 // This is configuration
+        public static string RestUrl
+#pragma warning restore CA1056 // URI-like properties should not be strings
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(_resturl))
+                {
+                    foreach (var c in Configuration.AsEnumerable())
+                    {
+                        if (c.Key.Contains("REST"))
+                        {
+                            _resturl = c.Value;
+                            break;
+                        }
+                    }
+
+                }
+                return _resturl;
+            }
+        }
+
+        #endregion
 
         #region "Assembly Metadata"
 
@@ -93,7 +157,6 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
         }
 
         #endregion
-
 
     }
 }

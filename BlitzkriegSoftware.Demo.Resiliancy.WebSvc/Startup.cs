@@ -41,15 +41,16 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
         /// </summary>
         public IConfiguration Configuration { get; }
 
+
         /// <summary>
         /// This method gets called by the runtime. Use this method to add services to the container.
         /// </summary>
         /// <param name="services">IServiceCollection</param>
-#pragma warning disable CA1822 // Mark members as static
+#pragma warning disable CA1822 // This is a false positive
         public void ConfigureServices(IServiceCollection services)
 #pragma warning restore CA1822 // Mark members as static
         {
-            _ = services.AddHealthChecks().AddCheck<Libs.BlitzHealthCheck>("Health Check");
+            _ = services.AddHealthChecks().AddCheck<Libs.BlitzHealthCheck>("Health-Check");
 
             _ = services.AddControllers();
 
@@ -72,7 +73,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
                  options.MaxAge = TimeSpan.FromMilliseconds(31536000);
              });
 
-            services.AddSwaggerGen(c =>
+            _ = services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc(Startup.MajorVersionCurrent, MakeOpenApiInfo(Program.ProgramMetadata.Product, Startup.MajorVersionCurrent, "Current API", Program.ProgramMetadata.ReleaseNotesUrl));
 
@@ -83,7 +84,6 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
                     c.IncludeXmlComments(xmlPath);
                 }
             });
-
         }
 
         private static OpenApiInfo MakeOpenApiInfo(string title, string version, string description, Uri releaseNotes)
@@ -102,6 +102,10 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 #pragma warning restore CA1822 // Mark members as static
         {
+
+            if (app == null) throw new ArgumentNullException(nameof(app));
+            if (env == null) throw new ArgumentNullException(nameof(env));
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -150,9 +154,10 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
 
-            app.UseHealthChecks("/health");
+            Program.Services = app.ApplicationServices;
         }
 
     }

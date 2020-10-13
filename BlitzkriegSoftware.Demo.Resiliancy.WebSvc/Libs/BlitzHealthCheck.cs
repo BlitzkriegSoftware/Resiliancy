@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BlitzkriegSoftware.AdoSqlHelper;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,7 +23,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
         /// CTOR
         /// </summary>
         /// <param name="logger">ILogger</param>
-        public BlitzHealthCheck(ILogger<BlitzHealthCheck> logger)
+        public BlitzHealthCheck(ILogger logger)
         {
             this._logger = logger;
         }
@@ -35,8 +36,8 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
         /// <returns>HealthCheckResult</returns>
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
+            Exception ex = null;
 
-            // Note: These are the minimum fields desired
             var info = new Dictionary<string, object>
             {
                 { "Product", Program.ProgramMetadata.Product },
@@ -46,20 +47,33 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
                 { "ReleaseNotesUrl", Program.ProgramMetadata.ReleaseNotesUrl },
             };
 
-            var deps = new Dictionary<string, object> {
-                    { "Dependancy-1", "OK" },
-                    { "Dependancy-2", "Timeout" },
-                    { "Dependancy-3", "OK" }
-            };
+            var deps = new Dictionary<string, string>();
+
+            try {
+                CheckSql();
+                deps.Add("SQL Connection", "Ok");
+            }
+            catch (SqlException e)
+            {
+                ex = e;
+                deps.Add( "SQL Connection", $"Not OK: {e.Message}" );
+            }
+
+            try
+            {
+                CheckRest();
+                deps.Add("REST API", "Ok");
+            } catch (System.Net.Http.HttpRequestException e)
+            {
+                ex = e;
+                deps.Add("REST API", $"Not OK: {e.Message}");
+            }
 
             var data = new Dictionary<string, object>
             {
                 { "Info" , info },
                 { "Dependencies", deps }
             };
-
-            // TODO: Capture any exceptions (if any)
-            Exception ex = null;
 
             var hcr = (ex == null) ?
                 new HealthCheckResult(HealthStatus.Healthy, $"{Program.ProgramMetadata.Product} is healthy", null, data) :
@@ -77,6 +91,22 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
             }
 
             return Task.FromResult(hcr);
+        }
+
+
+        private static void CheckSql()
+        {
+            var cs = Program.SqlConnectionString;
+            var sql = "select count(1) from [store].[Customer]";
+            _ = SqlHelper.ExecuteSqlWithParametersToScaler<int>(cs, sql, null);
+        }
+
+        private static void CheckRest()
+        {
+            var uri = new Uri(Program.RestUrl + "/api/v1/employee/1");
+            var factory = Program.Services.GetRequiredService<IHttpClientFactory>();
+            var client = factory.CreateClient();
+            _ = client.GetAsync(uri).GetAwaiter().GetResult();
         }
 
     }
