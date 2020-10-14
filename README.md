@@ -29,7 +29,10 @@ The SQL Demos use the Blitzkrieg Bicycle Demo.
 
 ## Restore SQL Linux
 
-You don't need to run this but it is here for completeness, see: `data/Restore.sql` and `data/Bicycle.bak`
+You don't need to run this but it is here for completeness, see: 
+* `data/Bicycle.bak` - The actual backup of the `Bicycle` database for SQL Server
+* `data/Restore.sql` - SQL Server Restore Script
+* `data/Restore-Bicycle.sh` - Bash script to run `sqlcmd` to in turn run the `sql` script, which restores the `bak` file
 
 ## Demo REST endpoint to call
 
@@ -38,4 +41,20 @@ This exellent endpoint is just the thing to demo how to use `HttpClientFactory` 
 http://dummy.restapiexample.com/
 
 
+## About
+
+Stuart Williams
+
+* Cloud/DevOps Practice Lead
+
+* Magenic Technologies Inc.
+* Office of the CTO
+
+* [e-mail](mailto:stuartw@magenic.com)
+
+* [Blog](https://blitzkriegsoftware.azurewebsites.net/Blog)
+
+* [LinkedIn](http://lnkd.in/P35kVT)
+
+* [YouTube](https://www.youtube.com/user/spookdejur1962/videos)
 
