@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
@@ -46,7 +47,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
         {
             using(var ctx = new Ef.BicycleContext(_factory, Program.SqlConnectionString))
             {
-                var q1 = (from c in ctx.Customer
+                var q1 = (from c in ctx.Customer.AsNoTracking()
                           join o in ctx.Order
                           on c.CustomerId equals o.CustomerId
                           join od in ctx.OrderDetail 
