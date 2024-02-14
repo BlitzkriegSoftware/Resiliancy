@@ -21,6 +21,10 @@ In `scripts/` there are the following scripts
 * sql-cmd.sh - Opens a SQL prompt on the container  
 * sh-cmd.sh  - Opens a BASH shell on the container
 
+--or--
+
+* * sql-start.ps1
+
 ## Bicylce SQL Database
 
 The SQL Demos use the Blitzkrieg Bicycle Demo. 
@@ -41,20 +45,13 @@ This exellent endpoint is just the thing to demo how to use `HttpClientFactory` 
 http://dummy.restapiexample.com/
 
 
-## About
+Licensed under the [MIT license](LICENSE).
 
-Stuart Williams
+## About me ##
 
-* Cloud/DevOps Practice Lead
+**Stuart Williams**
 
-* Magenic Technologies Inc.
-* Office of the CTO
-
-* [e-mail](mailto:stuartw@magenic.com)
-
-* [Blog](https://blitzkriegsoftware.azurewebsites.net/Blog)
-
-* [LinkedIn](http://lnkd.in/P35kVT)
-
-* [YouTube](https://www.youtube.com/user/spookdejur1962/videos)
-
+* I Cloud. I Code. 
+* <a href="mailto:stuart.t.williams@outlook.com" target="_blank">stuart.t.williams@outlook.com</a> (e-mail)
+* LinkedIn: <a href="http://lnkd.in/P35kVT" target="_blank">http://lnkd.in/P35kVT</a>
+* YouTube: <a href="https://www.youtube.com/user/spookdejur1962/videos" target="_blank">https://www.youtube.com/user/spookdejur1962/videos</a> 

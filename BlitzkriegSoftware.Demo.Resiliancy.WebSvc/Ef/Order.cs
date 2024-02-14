@@ -38,11 +38,10 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Ef
         /// Navigation back
         /// </summary>
         public virtual Customer Customer { get; set; }
+
         /// <summary>
         /// Collection: Order Detail
         /// </summary>
-#pragma warning disable CA2227 // Required by EF
         public virtual ICollection<OrderDetail> OrderDetail { get; set; }
-#pragma warning restore CA2227 // Collection properties should be read only
     }
 }

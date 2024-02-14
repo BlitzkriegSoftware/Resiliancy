@@ -19,7 +19,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
     public class HttpController : _ControllerBase
     {
         private readonly IHttpClientFactory _factory;
-        private readonly IConfiguration _config;
+        //private readonly IConfiguration _config;
 
         /// <summary>
         /// Client Factory
@@ -37,11 +37,10 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
         /// </summary>
         /// <param name="logger">ILogger</param>
         /// <param name="factory">IHttpClientFactory</param>
-        /// <param name="config">IConfiguration</param>
-        public HttpController(ILogger<HttpController> logger, IHttpClientFactory factory, IConfiguration config) : base(logger)
+        public HttpController(ILogger<HttpController> logger, IHttpClientFactory factory) : base(logger)
         {
             this._factory = factory;
-            this._config = config;
+            //this._config = config;
         }
 
         /// <summary>
@@ -51,7 +50,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
         [HttpGet("employees")]
         [Produces("application/json")]
         [ProducesResponseType(200)]
-        public string Employees()
+        public ActionResult Employees()
         {
             var url = "/api/v1/employees";
 
@@ -60,8 +59,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
             var result = client.GetAsync(uri).GetAwaiter().GetResult();
 
             var json = result.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-
-            return json;
+            return Content(json, "application/json");
         }
 
     }

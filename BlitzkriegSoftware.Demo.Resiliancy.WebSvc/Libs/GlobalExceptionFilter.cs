@@ -19,9 +19,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
         /// <summary>
         /// Field: ILogger
         /// </summary>
-#pragma warning disable CA1051 // Do not declare visible instance fields
         protected readonly ILogger _logger;
-#pragma warning restore CA1051 // Do not declare visible instance fields
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GlobalExceptionFilter"/> class.
@@ -41,9 +39,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
         #region "Dispose"
 
         // Flag: Has Dispose already been called?
-#pragma warning disable CA1805 // Do not initialize unnecessarily
         private bool disposed = false;
-#pragma warning restore CA1805 // Do not initialize unnecessarily
 
         /// <summary>
         /// Public implementation of Dispose pattern callable by consumers.
@@ -114,6 +110,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
             this._logger?.LogError(err.ToString());
 
             response.WriteAsync(JsonConvert.SerializeObject(err));
+            response.CompleteAsync().ConfigureAwait(false).GetAwaiter().GetResult();
         }
     }
 }

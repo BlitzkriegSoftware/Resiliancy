@@ -61,9 +61,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
         /// <summary>
         /// IServiceCollection
         /// </summary>
-#pragma warning disable CA2227 // Needed for Start up
         public static IServiceProvider Services { get; set; }
-#pragma warning restore CA2227 // Collection properties should be read only
 
         /// <summary>
         /// IConfiguration Root
@@ -100,9 +98,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
         /// <summary>
         /// Rest URL
         /// </summary>
-#pragma warning disable CA1056 // This is configuration
         public static string RestUrl
-#pragma warning restore CA1056 // URI-like properties should not be strings
         {
             get
             {

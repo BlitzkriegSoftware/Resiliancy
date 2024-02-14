@@ -14,9 +14,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
         /// <summary>
         /// Case Info
         /// </summary>
-#pragma warning disable CA1034 // Nested types should not be visible
         public class CaseInfo
-#pragma warning restore CA1034 // Nested types should not be visible
         {
             /// <summary>
             /// Gets or sets a value indicating whether is Default Case

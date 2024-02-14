@@ -11,7 +11,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
     public static class HttpRetryPolicyJitter
     {
         // Weak Crypto is not an issue here
-        static readonly Random jitterer = new Random();
+        static readonly Random jitterer = new();
 
         /// <summary>
         /// Gives back a nice standard policy
@@ -25,9 +25,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
                 .OrResult(msg => msg.StatusCode == System.Net.HttpStatusCode.GatewayTimeout)
                 .WaitAndRetryAsync(5,
                     retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt))
-#pragma warning disable SCS0005 // Does not matter, not for Crypto
                                   + TimeSpan.FromMilliseconds(jitterer.Next(0, 100))
-#pragma warning restore SCS0005 // Weak random generator
                 );
         }
     }

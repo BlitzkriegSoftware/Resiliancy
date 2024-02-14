@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
 {
@@ -69,8 +70,9 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers
                     );
 
                 var results = q1.ToList();
+                var json = JsonConvert.SerializeObject( results );
 
-                return this.Ok(results);
+                return Content(json, "application/json");
             }
         }
 

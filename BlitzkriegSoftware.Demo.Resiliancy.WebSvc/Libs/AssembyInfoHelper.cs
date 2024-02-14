@@ -24,14 +24,14 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Libs
                 var i = s.IndexOf('"');
                 if (i >= 0)
                 {
-                    s = s.Substring(i + 1);
+                    s = s[(i + 1)..];
                     flag = true;
                 }
 
                 i = s.IndexOf('"');
                 if (i >= 0)
                 {
-                    s = s.Substring(0, i);
+                    s = s[..i];
                     flag = true;
                 }
             }

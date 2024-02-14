@@ -84,13 +84,12 @@
             Client Factory
             </summary>
         </member>
-        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController},System.Net.Http.IHttpClientFactory,Microsoft.Extensions.Configuration.IConfiguration)">
+        <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.#ctor(Microsoft.Extensions.Logging.ILogger{BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController},System.Net.Http.IHttpClientFactory)">
             <summary>
             CTOR
             </summary>
             <param name="logger">ILogger</param>
             <param name="factory">IHttpClientFactory</param>
-            <param name="config">IConfiguration</param>
         </member>
         <member name="M:BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Controllers.HttpController.Employees">
             <summary>

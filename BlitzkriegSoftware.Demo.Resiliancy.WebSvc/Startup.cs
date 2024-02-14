@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
 {
@@ -46,13 +47,15 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
         /// This method gets called by the runtime. Use this method to add services to the container.
         /// </summary>
         /// <param name="services">IServiceCollection</param>
-#pragma warning disable CA1822 // This is a false positive
         public void ConfigureServices(IServiceCollection services)
-#pragma warning restore CA1822 // Mark members as static
         {
-            _ = services.AddHealthChecks().AddCheck<Libs.BlitzHealthCheck>("Health-Check");
+            _ = services.AddHealthChecks()
+                .AddCheck<Libs.BlitzHealthCheck>("Health-Check");
 
-            _ = services.AddControllers();
+            _ = services.AddControllers(o =>
+            { 
+                o.RespectBrowserAcceptHeader = true;
+            });
 
             _ = services.AddCors();
 
@@ -98,9 +101,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
         /// </summary>
         /// <param name="app">IApplicationBuilder</param>
         /// <param name="env">IWebHostEnvironment</param>
-#pragma warning disable CA1822 // Mark members as static
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-#pragma warning restore CA1822 // Mark members as static
         {
 
             if (app == null) throw new ArgumentNullException(nameof(app));
@@ -143,6 +144,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint($"/swagger/{MajorVersionCurrent}/swagger.json", $"API {MajorVersionCurrent}");
+                c.EnableTryItOutByDefault();
             });
 
             #endregion

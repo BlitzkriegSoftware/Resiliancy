@@ -9,7 +9,7 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Svcs
     /// </summary>
     public class HttpCaller : IHttpCaller
     {
-        private HttpClient _client;
+        private readonly HttpClient _client;
 
         private HttpCaller() { }
 

@@ -29,15 +29,11 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models
         /// <summary>
         /// Gets or sets additional Data
         /// </summary>
-#pragma warning disable CA2227 // Collection properties should be read only
         public Dictionary<string, string> Data
         {
             get
             {
-                if (this._data == null)
-                {
-                    this._data = new Dictionary<string, string>();
-                }
+                this._data ??= new Dictionary<string, string>();
                 return this._data;
             }
             set
@@ -45,7 +41,6 @@ namespace BlitzkriegSoftware.Demo.Resiliancy.WebSvc.Models
                 this._data = value;
             }
         }
-#pragma warning restore CA2227 // Collection properties should be read only
 
         /// <summary>
         /// Debugging String
